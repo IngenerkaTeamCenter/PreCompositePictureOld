@@ -1,0 +1,2 @@
+# PreCompositePicture
+Прототип проекта "фоторобот"
