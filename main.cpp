@@ -1,33 +1,24 @@
 #include <iostream>
+#include <string>
 #include "TXLib.h"
 
-using namespace std;
-//Nikita   https://www.youtube.com/channel/UCkgs4bosZVc634LJu1lJhOQ
+//Nikita https://www.youtube.com/channel/UCkgs4bosZVc634LJu1lJhOQ
+
 int main()
 {
-    char str [20];
+    std::string str;
     txCreateWindow(1280,720);
-    cout << "ВВЕДИТЕ ЦИФРУ от 1-5 (1-Машина 2-Автобус 3-Троллейбус 4-Ничего 5-Ниего)" <<endl;
-    cin >> str;
+    std::cout << "Enter number from 1 to 5 (1-Car 2-Bus 3-Trolley-bus 4-Nothing 5-Nothing)" << std::endl;
+    std::cin >> str;
+
+    int n = std::atoi(str.c_str());
 
     HDC background_FromTXLibHelp;
 
-    if (strcmp(str, "1")== 0) {
-        background_FromTXLibHelp = txLoadImage ("1.bmp");
-    } else if (strcmp(str, "2")== 0) {
-        background_FromTXLibHelp = txLoadImage ("2.bmp");
-    } else if (strcmp(str, "3")== 0) {
-        background_FromTXLibHelp = txLoadImage ("3.bmp");
-    } else if (strcmp(str, "4")== 0) {
-        background_FromTXLibHelp = txLoadImage ("4.bmp");
-    } else if (strcmp(str, "5")== 0) {
-        background_FromTXLibHelp = txLoadImage ("5.bmp");
-    }
-
+    background_FromTXLibHelp = txLoadImage((n + ".bmp"));
 
     txBitBlt (txDC(), 0, 0, 1280, 720, background_FromTXLibHelp, 0, 0);
     txDeleteDC (background_FromTXLibHelp);
-
 
     return 0;
 }
