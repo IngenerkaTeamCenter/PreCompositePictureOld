@@ -10,15 +10,26 @@ int main()
     txCreateWindow(1280,720);
     std::cout << "Enter number from 1 to 5 (1-Car 2-Bus 3-Trolley-bus 4-Nothing 5-Nothing)" << std::endl;
     std::cin >> str;
+    
+    int n;
+    try {
+        n = std::atoi(str.c_str());
+    } catch (...) {
+        std::cout << "Error!" << std::endl;
+	exit(1);
+    }
 
-    int n = std::atoi(str.c_str());
+    if (n < 0 and n > 5) {
+	std::cout << "Error!" << std::endl;
+	exit(1);
+    }
 
     HDC background_FromTXLibHelp;
 
     background_FromTXLibHelp = txLoadImage((n + ".bmp"));
 
-    txBitBlt (txDC(), 0, 0, 1280, 720, background_FromTXLibHelp, 0, 0);
-    txDeleteDC (background_FromTXLibHelp);
+    txBitBlt(txDC(), 0, 0, 1280, 720, background_FromTXLibHelp, 0, 0);
+    txDeleteDC(background_FromTXLibHelp);
 
     return 0;
 }
